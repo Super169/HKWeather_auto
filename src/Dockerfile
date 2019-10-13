@@ -10,8 +10,8 @@ COPY package.json .
 
 # Due to nomnom deprecated issue, add -g artillery --unsafe-perm=true --allow-root 
 # refer to https://github.com/artilleryio/artillery/issues/671
-RUN npm install -g artillery --unsafe-perm=true --allow-root
-# RUN npm install 
+# RUN npm install -g artillery --unsafe-perm=true --allow-root
+RUN npm install 
 # If you are building your code for production
 # RUN npm install --only=production
 
