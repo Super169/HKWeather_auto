@@ -1,0 +1,139 @@
+
+<HTML  lang="en" >
+<HEAD>
+<meta name="Comments" content="WCAG2.0_Verified" />
+<meta name="Keywords" content="Regional Weather Hong Kong" />
+<meta name="Page Author" content="HKO" />
+<meta name="Template Keywords" content="Regional weather Hong Kong" />
+<meta name="Template Author" content="HKO" />
+<meta name="Template Description" content="Regional weather HK" />
+
+<META http-equiv="Content-Type" content="text/html; CHARSET=UTF-8">
+<TITLE>Regional Weather in Hong Kong</TITLE>
+
+
+
+
+</HEAD>
+<BODY  >
+
+<script type="text/javascript" src="/js/jquery/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="/js/clf_textonly.js"></script>
+<STYLE><!-- BODY{font-family="Courier New"} --></STYLE>
+
+<title>Regional Weather in Hong Kong</title>
+<STYLE type="text/css">
+ #wcag_logo_area{ display:inline; text-align: center; }
+ #wcag_logo_area a img{ border:	0px; position:relative; top:12px; }
+ </STYLE>
+<div align="center"><p><img src="../../images_e/logo_dblue.gif" alt="Hong Kong Observatory logo"></p></div>
+<span style="color:blue;"><div style="font-size:150%;font-weight:bold;text-align:center;padding-top:3px;padding-bottom:3px;">Regional Weather in Hong Kong</div></span>
+<p><span style="font-family:Courier;"><pre>
+Latest readings recorded at 11:50 Hong Kong Time 21 November 2017
+
+                               Air     Relative   Maximum/Minimum   Grass           Minimum Grass
+                         Temperature   Humidity   Air Temperature   Temperature     Temperature Since
+                                                  Since Midnight                    5 p.m. Yesterday
+                                                  (21 Nov 2017)                     Till 8 a.m. Today
+                     (degree Celsius) (percent)   (degree Celsius) (degree Celsius) (degree Celsius)
+Chek Lap Kok                   18.5       66        19.0 / 16.1                       
+Cheung Chau                    19.9       73        19.9 / 16.5                       
+Happy Valley                   19.9      N/A        20.2 / 18.3                       
+HK Observatory                 19.5       76        19.5 / 17.5                       
+HK Park                        19.4      N/A        19.4 / 18.0                       
+Kai Tak Runway Park            19.9      N/A        19.9 / 18.0                       
+Kau Sai Chau                   18.5       72        18.5 / 15.0                       
+King's Park                    19.3       72        19.3 / 16.8                      17.2   
+Kowloon City                   19.3      N/A        19.3 / 16.0                       
+Kwun Tong                      18.8      N/A        18.8 / 16.4                       
+Lau Fau Shan                    N/A      N/A        16.1*/ 14.9*                         
+Ngong Ping                     13.3      N/A        13.4 / 10.5                       
+Pak Tam Chung                  18.0      N/A        18.2 / 14.8                       
+Peng Chau                      19.9       75        19.9 / 16.3                       
+Sai Kung                       18.8       73        18.8 / 15.9                       
+Sha Tin                        18.9       71        18.9 / 15.7                       
+Sham Shui Po                   19.9      N/A        19.9 / 16.7                       
+Shau Kei Wan                   18.8      N/A        18.9 / 16.7                       
+Shek Kong                      18.3       71        18.3 / 15.0                       
+Sheung Shui                    17.7       73        17.7 / 14.3                       
+Stanley                        19.6      N/A        19.6 / 17.5                       
+Ta Kwu Ling                    18.4       66        18.4 / 14.2                      16.1   
+Tai Mei Tuk                    19.3      N/A        19.8 / 15.7                       
+Tai Mo Shan                    12.1      N/A        12.8 / 11.7                      11.7   
+Tai Po                         18.0       73        18.0 / 14.8                       
+Tate's Cairn                   14.9      N/A        14.9 / 11.0                       
+The Peak                       16.4      N/A        16.6 / 14.6                       
+Tseung Kwan O                  19.0       73        19.0 / 16.6                       
+Tsing Yi                       19.7       70        19.7 / 17.5                       
+Tsuen Wan Ho Koon              18.2       80        18.2 / 14.8                       
+Tsuen Wan Shing Mun Valley     19.5       70        19.7 / 16.3                       
+Tuen Mun                       19.0       67        19.0 / 15.6                       
+Waglan Island                  19.9       73        19.9 / 17.4                       
+Wetland Park                   18.3       65        18.5 / 15.2                       
+Wong Chuk Hang                 20.5       68        20.5 / 18.3                       
+Wong Tai Sin                   19.9      N/A        19.9 / 15.9                       
+Yuen Long Park                 18.4      N/A        18.4 / 15.0                       
+
+10-Minute Mean Wind Direction, Speed and Maximum Gust (km/hour)
+Chek Lap Kok          North         11    16
+Cheung Chau           North         15    24
+Cheung Chau Beach     North         14    26
+Green Island          North         18    24
+Kai Tak               Northeast     12    20
+King's Park           East           5    13
+Lau Fau Shan          North          9    16
+Ngong Ping            N/A           N/A   N/A
+Peng Chau             Northwest     18    26
+Sai Kung              North          9    16
+Sha Chau              N/A           N/A   N/A
+Sha Tin               Northeast      5    13
+Shek Kong             Northeast      7    14
+Stanley               N/A           N/A   N/A
+Star Ferry            East          12    18
+Ta Kwu Ling           Northwest      7    15
+Tai Mei Tuk           South          2     7
+Tai Po Kau            West           9    14
+Tap Mun               Northwest     11    18
+Tate's Cairn          East          18    24
+Tseung Kwan O         Northeast      5    14
+Tsing Yi              Northwest      7    15
+Tuen Mun              North          6    15
+Waglan Island         Northeast     22    31
+Wetland Park          East           6    12
+Wong Chuk Hang        Northeast      9    19
+
+Mean Sea Level Pressure (hPa)
+Chek Lap Kok           1019.6
+Cheung Chau            1018.6
+HK Observatory         1018.9
+Lau Fau Shan             N/A  
+Peng Chau              1019.0
+Sha Tin                1019.1
+Shek Kong              1019.7
+Sheung Shui            1019.5
+Ta Kwu Ling            1019.6
+Tai Po                   N/A  
+Waglan Island          1018.8
+Wetland Park           1019.6
+
+10-Minute Mean Visibility
+Central            18 km
+Chek Lap Kok       14 km
+Sai Wan Ho         40 km
+Waglan Island      15 km
+
+               Global Solar       Direct Solar       Diffuse Solar
+              Radiation (W/m<sup>2</sup>)   Radiation (W/m<sup>2</sup>)   Radiation (W/m<sup>2</sup>)
+Kau Sai Chau      273.0                3.0              256.0             
+King's Park       180.0                1.0              168.0             
+
+N/A - data not available
+The data displayed is provisional. Only limited data validation has been carried out. 
+*   - derived from incomplete data set
+
+</pre></span>
+<div align="center">| &nbsp;<a href="explain_e.htm#temperature" title="Explanatory note for air temperature and relative humidity readings">Explanatory note</a> &nbsp;| &nbsp;<a href="http://www.weather.gov.hk/wxinfo/ts/text_readings_c.htm" ><img src="tra_chinese.gif" border="0" alt="Traditional Chinese version" title="Traditional Chinese version"></a> &nbsp;| &nbsp;<a href="http://gb.weather.gov.hk/wxinfo/ts/text_readings_c.htm" ><img src="sim_chinese.gif" border="0" alt="Simplified Chinese version" title="Simplified Chinese version"></a> &nbsp;| &nbsp;<a href="http://www.weather.gov.hk/wxinfo/ts/text_readings_e.htm" >English version</a> &nbsp;<DIV id="wcag_logo_area"></DIV> </div>
+
+
+</BODY>
+</HTML>

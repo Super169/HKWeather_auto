@@ -1,0 +1,2 @@
+- Install node.js (download from https://nodejs.org/en/download/)
+- Install Visual Studio Code

@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<HTML  lang="en" >
+<HEAD>
+<TITLE>9-day weather forecast</TITLE>
+<META http-equiv="Content-Type" content="text/html; CHARSET=UTF-8">
+<meta name="Comments" content="WCAG2.0_Verified" />
+<meta name="Description" content="9-Day Weather Forecast of Hong Kong issued by the Hong Kong Observatory" />
+<meta name="Keywords" content="9-Day Weather Forecast, General Situation, Hong Kong Observatory, HKO" />
+
+</HEAD>
+<BODY  >
+<script type="text/javascript" src="/js/jquery/jquery-1.6.4.min.js"></script>
+<script language="JavaScript" src="/clf.js?20121105"></script>
+<script language='javascript' src="/JSMenu_MAIN.js"></script>
+<script language='javascript' src="/enJSMenu.js"></script>
+<script language='javascript' src='/additionalMenu_EN.js'></script>
+<script language='javascript' src='/common/common_page_en.js'></script>
+<LINK rel=stylesheet type=text/css href="/engimages/clf.css?20121026">
+<LINK rel="SHORTCUT ICON" href="/Logo.ico">
+<LINK rel=stylesheet type=text/css href="/common/common_page_en.css">
+<DIV id=clf_wrapper>
+<DIV id=clf_header>
+<DIV class="header_info weather_bg">
+<DIV id=lunar_date style="FLOAT: left; COLOR: #fff; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; LINE-HEIGHT: 22px; PADDING-RIGHT: 5px">
+<DIV id=dateTimeDisplay_en></DIV>
+<A title="Gregorian/Lunar Calendar" href="/gts/time/conversion.htm"><IMG style="VERTICAL-ALIGN: middle" alt="Gregorian/Lunar Calendar" src="/common/calendar_icon.png"></A> </DIV>
+<DIV id=header_links style="FLOAT: right; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; LINE-HEIGHT: 22px; PADDING-RIGHT: 5px">
+<DIV id=setting>Settings</DIV>
+|
+<DIV id=mobie_version>Mobile</DIV>
+|
+<DIV id=uc_link>繁體</DIV>
+|
+<DIV id=gb_link>简体</DIV>
+|
+<DIV id=search>Search</DIV>
+</DIV>
+</DIV>
+<DIV id=hko_logo></DIV>
+<DIV style="DISPLAY: none"><td class="rtv_lang_text_only" background="/engimages/bkgdtexture.gif" align="left" valign="bottom"><a href="/textonly/v2/forecast/nday.htm" title="" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('mainbar2','','/engimages/mainbar2_f2.gif',1)"><img name="mainbar2" src="/engimages/mainbar2.gif" border="0" alt="Text Only"></a></td> <td class="rtv_lang_chi_trad" background="/engimages/bkgdtexture.gif" align="left" valign="bottom">
+<a href="/wxinfo/currwx/fndc.htm" title="" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('mainbar3','','/engimages/mainbar3_f2.gif',1)">
+<img name="mainbar3" src="/engimages/mainbar3.gif" border="0" alt="Traditional Chinese">
+</a>
+</td>
+<td class="rtv_lang_chi_simp" background="/engimages/bkgdtexture.gif" align="left" valign="bottom">
+<a href="http://gb.weather.gov.hk/wxinfo/currwx/fndc.htm" title="" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('mainbar4','','/engimages/mainbar4_f2.gif',1)">
+<img name="mainbar4" src="/engimages/mainbar4.gif" border="0" alt="Simplified Chinese">
+</a>
+</td>  </DIV>
+</DIV>
+<DIV id=clf_main_content class=clf_table>
+<DIV class=clf_table_row>
+<DIV id=clf_menubar class=clf_table_cell>
+<script>
+						var currPage = 0; NoNavgID = false;loadNavgMenu();
+						$(hko_nav_bar).append('<li class="firstL bottom_black"><a class="side" href="javascript:history.back();" title="Back">Back</a></li>');
+					</script>
+<DIV id=wcag_logo_area></DIV>
+</DIV>
+<DIV class=clf_table_cell>
+<DIV id=clf_main_content_body>
+<DIV id=cssmenu></DIV>
+<DIV id=submenu_area>
+<DIV id=submenu_area_level1></DIV>
+<DIV class=submenu_area_level2></DIV>
+</DIV>
+<DIV id=content_start><div align="right"><A href="#" OnClick = "javascript:var chartWindow = window.open('/prtver/html/docs/wxinfo/currwx/fnd.shtml','chartWindow','toolbar=no,location=no,scrollbars=yes,menubar=no,resizable=yes,statusbar=no,width=800,height=600');chartWindow.focus();"><img src="/engimages/printbutton.png" alt="Print Version" border="0"></A></div>
+ 
+<script>var menu_bar_title = "9-day Weather Forecast";</script>
+<script type="text/javascript">wcag_setTimer(600000, 'eng');</script>
+
+<style>
+	.oddCol
+	{
+		background-image: url('/wxinfo/currwx/img/light_blue_bg.png');
+	}
+	.evenCol
+	{
+		background-image: url('/wxinfo/currwx/img/deep_blue_bg.png');
+	}
+	.data td
+	{
+		border: 1px solid black;
+	}
+	.data
+	{
+	border-collapse:collapse;
+	}
+	.remark1
+	{
+		border-top: solid #FCFFC6  1px !important;
+	}
+	.chart1
+	{
+		border-bottom: solid #FCFFC6  1px !important;
+	}
+
+	.remark2
+	{
+		border-top: solid #D5FFEC  1px !important;
+	}
+	.chart2
+	{
+		border-bottom: solid #D5FFEC  1px !important;
+	}	
+	#forecast_desc div
+	{
+		width: 80px;
+	}
+
+	.highcharts-container
+	{
+		margin-top: -10px;
+	}
+	.btn {
+	  background: #3498db;
+	  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+	  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+	  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+	  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+	  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+	  -webkit-border-radius: 8;
+	  -moz-border-radius: 8;
+	  border-radius: 8px;
+	  font-family: Arial;
+	  color: #ffffff;
+	  font-size: 14px;
+	  padding: 10px 20px 10px 20px;
+	  text-decoration: none;
+}
+
+	.btn:hover {
+		background: #3cb0fd;
+		background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+		background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+		background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+		background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+		background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+		text-decoration: none;
+	}
+	.btn a {
+		text-decoration:none;
+		color: #ffffff;
+	}
+</style>
+<div style="position: relative;  width: 765px;">
+<script src="/js/highcharts_v3.0.10.js"></script>
+<script src="/js/highcharts-more.js"></script>
+<link rel="alternate" type="application/rss+xml" title="9-day Weather Forecast" href="http://rss.weather.gov.hk/rss/SeveralDaysWeatherForecast.xml">
+<div style="float:right"><a href="http://rss.weather.gov.hk/rss/SeveralDaysWeatherForecast.xml"><img src="/img/rss_logo1.png" alt="7-day Weather Forecast RSS" border="0" /></a></div>
+<style>
+	#fnd_switch_chart:hover
+	{
+		border: 1px solid #54BAFF;
+	}
+	.fnd_more_show
+	{
+		display: none;
+	}
+</style>
+<script type="text/javascript">
+var rh_chart;
+function fnd_chart_RH()
+{
+	rh_chart = new Highcharts.Chart({
+	chart: {
+				renderTo: 'container_7day_chart_rh',
+				backgroundColor: {
+				linearGradient: { x1: 0, y1: 0, x2: 0, y2: 0.5},
+				stops: [
+						[0, 'rgba(255, 255, 255, 1)'],
+						[1, '#D5FFEC']
+					   ]
+				},
+				width:765,
+				height:250
+       
+		   },
+	colors: ['#BE4B48', '#4A7EBB'],
+	exporting: { enabled: false },
+	legend: { enabled: false },
+	title: {
+				text: 'Humidity (%)',
+				y: 20 ,
+				style:	{ color: 'rgb(0, 173, 255)', fontSize: '16px', fontWeight: 'bold' }
+	},
+	credits: {	enabled: false },
+	xAxis: {
+				tickWidth: 1,
+				categories: [
+								'<div style="font-weight: bold;">08 Nov (WED)</div>','<div style="font-weight: bold;">09 Nov (THU)</div>','<div style="font-weight: bold;">10 Nov (FRI)</div>','<div style="font-weight: bold;">11 Nov (SAT)</div>','<div style="font-weight: bold;">12 Nov (SUN)</div>','<div style="font-weight: bold;">13 Nov (MON)</div>','<div style="font-weight: bold;">14 Nov (TUE)</div>','<div style="font-weight: bold;">15 Nov (WED)</div>','<div style="font-weight: bold;">16 Nov (THU)</div>'	
+				],				
+				tickmarkPlacement: 'on',
+				labels: { enabled: false, x: 0, useHTML: true }
+	},
+	yAxis: {
+				maxPadding: 0.5, minPadding: 0.5, tickInterval: 10,
+				title: {
+							text: '',rotation: 0, offset: 20,
+							style: { color: '#666', fontSize: '16px'}
+				},
+				labels: {
+							enabled: false,
+							formatter: function() {
+
+								if (this.value > 100) {
+									return "";
+								}
+
+								return this.value + '%';
+							}
+				}
+	},
+	tooltip: {  crosshairs: true, shared: true, enabled: false,
+				formatter:function() {
+					var s = '<b>'+ this.x +'</b>';
+					var i=0;
+					var low, high, avglow, avghigh;
+					$.each(this.points, function(i, point) {
+						
+						if (i == 0)
+						{
+							high = point.y;
+						}
+						else if ( i == 1)
+						{
+							low = point.y
+							s += "<br>Forecast RH:" + low + "-"+ high +"%";
+						}
+						else if (i == 2)
+						{	
+							avglow = point.y;
+						}
+						else if (i ==3)
+						{
+							avghigh = point.y;
+							s += '<br/>Daily Mean:'+ avglow +"-"+ avghigh+"%";
+						}
+						i++;	
+					});		
+					return s;
+				}
+	},	
+	plotOptions: { line: {
+							dataLabels: { enabled: true, borderRadius: 5, borderWidth: 1, y: -16 },
+							shadow:true, enableMouseTracking: true
+						 }
+                 },
+	series: [
+				{ 
+					name: 'Highest', marker: { symbol: 'square' },
+					dataLabels: { enabled: true, backgroundColor: '#FFDB69', borderWidth: 1, borderColor: '#AAA',borderRadius: 5, y: -5,
+					style: { fontWeight: 'bold', fontSize: '12pt'}
+					},
+					style: { fontWeight: 'bold' },
+					data: [	85,85,85,85,90,90,85,85,85	]
+				},
+				{
+					name: 'Lowest', marker: { symbol: 'circle' },
+					dataLabels: { enabled: true, backgroundColor: '#C6D9F1', borderWidth: 1, borderColor: '#AAA', borderRadius: 5, y: +40,
+					style: { fontWeight: 'bold', fontSize: '12pt' }
+					},
+					data: [ 65,65,60,65,70,65,65,65,65	]
+				},
+				{
+					name: 'Max Temp Rang:',
+					data: [ 
+						[climatData.climat.day1.maxRH_25per, climatData.climat.day1.maxRH_75per],
+						[climatData.climat.day2.maxRH_25per, climatData.climat.day2.maxRH_75per],
+						[climatData.climat.day3.maxRH_25per, climatData.climat.day3.maxRH_75per],
+						[climatData.climat.day4.maxRH_25per, climatData.climat.day4.maxRH_75per],
+						[climatData.climat.day5.maxRH_25per, climatData.climat.day5.maxRH_75per],
+						[climatData.climat.day6.maxRH_25per, climatData.climat.day6.maxRH_75per],
+						[climatData.climat.day7.maxRH_25per, climatData.climat.day7.maxRH_75per],
+						[climatData.climat.day8.maxRH_25per, climatData.climat.day8.maxRH_75per],
+						[climatData.climat.day9.maxRH_25per, climatData.climat.day9.maxRH_75per]
+					],
+					type: 'arearange',
+					lineWidth: 0,
+					//color: Highcharts.getOptions().colors[0],
+					fillOpacity: 0.2,
+					zIndex: 0,
+					animation:false
+				},							
+				{
+					name: 'Min Temp Rang:',
+					data: [ 
+						[climatData.climat.day1.minRH_25per, climatData.climat.day1.minRH_75per],
+						[climatData.climat.day2.minRH_25per, climatData.climat.day2.minRH_75per],
+						[climatData.climat.day3.minRH_25per, climatData.climat.day3.minRH_75per],
+						[climatData.climat.day4.minRH_25per, climatData.climat.day4.minRH_75per],
+						[climatData.climat.day5.minRH_25per, climatData.climat.day5.minRH_75per],
+						[climatData.climat.day6.minRH_25per, climatData.climat.day6.minRH_75per],
+						[climatData.climat.day7.minRH_25per, climatData.climat.day7.minRH_75per],
+						[climatData.climat.day8.minRH_25per, climatData.climat.day8.minRH_75per],
+						[climatData.climat.day9.minRH_25per, climatData.climat.day9.minRH_75per]
+					],
+					type: 'arearange',
+					lineWidth: 0,
+					//color: Highcharts.getOptions().colors[0],
+					fillOpacity: 0.2,
+					zIndex: 0,
+					animation:false
+				}
+			]
+	},
+	function(chart) {   		
+		}	
+	);
+	$(".highcharts-data-labels rect").attr("transform","translate(0,-2)");
+	$(".highcharts-data-labels rect").attr("height","22");
+}     	
+var temp_chart;
+function fnd_chart_temp()
+{
+	temp_chart = new Highcharts.Chart({
+	chart: {
+                renderTo: 'container_7day_chart_temp',
+				backgroundColor: {
+					linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
+					stops: [
+						[0, 'rgb(255, 255, 255)'],
+						[1, 'rgb(252, 255, 197)']
+					]
+				},
+				width:765,
+				height:250				
+            },
+	colors: ['#BE4B48', '#4A7EBB'], exporting: { enabled: false },
+	legend: { verticalAlign: 'top', enabled: false },
+	title: { text: 'Temperature (°C)', y: 20, style: { color: 'rgb(255, 112, 0)', fontSize: '16px', fontWeight: 'bold'} },
+	credits: { enabled: false },
+	xAxis: { tickWidth: 1,
+			 categories: [
+				'<div style="font-weight: bold;">08 Nov (WED)</div>','<div style="font-weight: bold;">09 Nov (THU)</div>','<div style="font-weight: bold;">10 Nov (FRI)</div>','<div style="font-weight: bold;">11 Nov (SAT)</div>','<div style="font-weight: bold;">12 Nov (SUN)</div>','<div style="font-weight: bold;">13 Nov (MON)</div>','<div style="font-weight: bold;">14 Nov (TUE)</div>','<div style="font-weight: bold;">15 Nov (WED)</div>','<div style="font-weight: bold;">16 Nov (THU)</div>'					
+			 ],
+			 tickmarkPlacement: 'on', labels: { enabled: false, x: 0, useHTML: true }
+           },
+	yAxis: { maxPadding: 0.5, minPadding: 0.5, tickInterval: 2, title: { text: '', rotation: 0, offset: 20 }, max: 31,
+																						min: 16,
+			 labels: {
+						enabled: false,
+						formatter: function() {
+
+							if (this.value >= 25) {
+								return "";
+							}
+							return this.value + '°C';
+						}
+			}
+		   },
+	tooltip: { crosshairs: true, shared: true, enabled: false,
+			   formatter:function() {
+					var s = '<b>'+ this.x +'</b>';
+					var i=0;
+					var low, high, avglow, avghigh;
+					$.each(this.points, function(i, point) {
+						
+						if (i == 0)
+						{
+							high = point.y;
+						}
+						else if ( i == 1)
+						{
+							low = point.y
+							s += "<br>Forecast Temp:" + low + "-"+ high +"°C";
+						}
+						else if (i == 2)
+						{	
+							avglow = point.y;
+						}
+						else if (i ==3)
+						{
+							avghigh = point.y;
+							s += '<br/>Daily Mean:'+ avglow +"-"+ avghigh+"°C";
+						}
+						i++;	
+					});
+					return s;
+				}
+            },
+	plotOptions: { line: {
+							dataLabels: { enabled: true, borderRadius: 5, borderWidth: 1, y: -16 },
+							shadow:true, enableMouseTracking: true
+						 },
+					series: {cursor: 'pointer', events: { click: function (event) {
+											if (this.color =="#BE4B48") {
+												window.location = "/probfcst/tempfcst.htm#max"
+											} else if (this.color == "#4A7EBB") {
+												window.location = "/probfcst/tempfcst.htm#min"
+											}
+									}}}	 
+                 
+				 },
+	series: [
+				{
+					name: 'Forecasted Highest', marker: { symbol: 'square'}, color:"#BE4B48",
+					dataLabels: { enabled: true, backgroundColor: '#FFDB69',  borderColor:"#AAA", borderRadius: 5, y: 0,
+					style: { fontWeight: 'bold', fontSize: '12pt' }
+					},
+					data: [ 27,27,28,26,24,25,25,24,25]
+				},
+				{
+					name: 'Forecasted Lowest', marker: { symbol: 'circle' }, color:"#4A7EBB",
+					dataLabels: { enabled: true, backgroundColor: '#C6D9F1', borderColor:"#AAA", borderRadius: 5, y: +40,
+					style: { fontWeight: 'bold', fontSize: '12pt'}
+					},
+					data: [ 23,23,23,22,21,21,21,21,21]
+				},
+				{
+					name: 'Max Temp Rang:',
+					data: [ 
+						[climatData.climat.day1.maxTemp_25per, climatData.climat.day1.maxTemp_75per],
+						[climatData.climat.day2.maxTemp_25per, climatData.climat.day2.maxTemp_75per],
+						[climatData.climat.day3.maxTemp_25per, climatData.climat.day3.maxTemp_75per],
+						[climatData.climat.day4.maxTemp_25per, climatData.climat.day4.maxTemp_75per],
+						[climatData.climat.day5.maxTemp_25per, climatData.climat.day5.maxTemp_75per],
+						[climatData.climat.day6.maxTemp_25per, climatData.climat.day6.maxTemp_75per],
+						[climatData.climat.day7.maxTemp_25per, climatData.climat.day7.maxTemp_75per],
+						[climatData.climat.day8.maxTemp_25per, climatData.climat.day8.maxTemp_75per],
+						[climatData.climat.day9.maxTemp_25per, climatData.climat.day9.maxTemp_75per]
+					],
+					type: 'arearange',
+					lineWidth: 0,
+					//color: Highcharts.getOptions().colors[0],
+					fillOpacity: 0.2,
+					zIndex: 0,
+					animation:false
+				},							
+				{
+					name: 'Min Temp Rang:',
+					data: [ 
+						[climatData.climat.day1.minTemp_25per, climatData.climat.day1.minTemp_75per],
+						[climatData.climat.day2.minTemp_25per, climatData.climat.day2.minTemp_75per],
+						[climatData.climat.day3.minTemp_25per, climatData.climat.day3.minTemp_75per],
+						[climatData.climat.day4.minTemp_25per, climatData.climat.day4.minTemp_75per],
+						[climatData.climat.day5.minTemp_25per, climatData.climat.day5.minTemp_75per],
+						[climatData.climat.day6.minTemp_25per, climatData.climat.day6.minTemp_75per],
+						[climatData.climat.day7.minTemp_25per, climatData.climat.day7.minTemp_75per],
+						[climatData.climat.day8.minTemp_25per, climatData.climat.day8.minTemp_75per],
+						[climatData.climat.day9.minTemp_25per, climatData.climat.day9.minTemp_75per]
+					],
+					type: 'arearange',
+					lineWidth: 0,
+					//color: Highcharts.getOptions().colors[0],
+					fillOpacity: 0.2,
+					zIndex: 0,
+					animation:false
+				}
+			]
+				
+	},function(chart) {   		
+       			
+	});
+		$(".highcharts-data-labels rect").attr("transform","translate(0,-2)");
+		$(".highcharts-data-labels rect").attr("height","22");
+	}	
+	function GoForce(force){
+		newWin=window.open("/education/beaufort.htm#"+force,"winde","Width=380,height=100,Screenx=25,Screeny=175,resizable=yes,scrollbars=yes,status=no")
+		newWin.focus()
+	}
+
+	var chart;
+	var fnd_chart_display_temp = true;
+	var fnd_chart_cookie_name = "fnd_chart_preference_e";
+	var fnd_chart_cookie = "";
+    $(document).ready(function() {
+		fnd_chart_temp();
+		fnd_chart_RH();
+		$('#pen_temp_max_checkbox').click(function(){
+			check = $(this).is(":checked");
+			if(check) {
+				//temp_chart.series[2].show();
+				$('.pen_temp_max_title').css('color', 'black');
+				$('.highcharts-series:eq(2)').css({'opacity':'1'});
+			} else {
+				//temp_chart.series[2].hide();
+				$('.pen_temp_max_title').css('color', '#888');
+				$('.highcharts-series:eq(2)').css({'opacity':'0'});
+			}
+			temp_chart.redraw();
+			$(".highcharts-data-labels rect").attr("transform","translate(0,-2)");
+			$(".highcharts-data-labels rect").attr("height","22");
+		}); 
+		$('#pen_temp_min_checkbox').click(function(){
+			check = $(this).is(":checked");
+			if(check) {
+				//temp_chart.series[3].show();
+				$('.pen_temp_min_title').css('color', 'black');
+				$('.highcharts-series:eq(3)').css({'opacity':'1'});
+			} else {
+				//temp_chart.series[3].hide();
+				$('.pen_temp_min_title').css('color', '#888');
+				$('.highcharts-series:eq(3)').css({'opacity':'0'});
+			}
+			$(".highcharts-data-labels rect").attr("transform","translate(0,-2)");
+			$(".highcharts-data-labels rect").attr("height","22");
+		}); 
+		
+		$('#pen_rh_max_checkbox').click(function(){
+			check = $(this).is(":checked");
+			if(check) {
+				//rh_chart.series[2].show();
+				$('.pen_rh_max_title').css('color', 'black');
+				$('.highcharts-series:eq(6)').css({'opacity':'1'});
+			} else {
+				//rh_chart.series[2].hide();
+				$('.pen_rh_max_title').css('color', '#888');
+				$('.highcharts-series:eq(6)').css({'opacity':'0'});
+			}
+			$(".highcharts-data-labels rect").attr("transform","translate(0,-2)");
+			$(".highcharts-data-labels rect").attr("height","22");
+		});
+		
+		$('#pen_rh_min_checkbox').click(function(){
+			check = $(this).is(":checked");
+			if(check) {
+				//rh_chart.series[3].show();
+				$('.pen_rh_min_title').css('color', 'black');
+				$('.highcharts-series:eq(7)').css({'opacity':'1'});
+			} else {
+				//rh_chart.series[3].hide();
+				$('.pen_rh_min_title').css('color', '#888');
+				$('.highcharts-series:eq(7)').css({'opacity':'0'});
+			}
+			$(".highcharts-data-labels rect").attr("transform","translate(0,-2)");
+			$(".highcharts-data-labels rect").attr("height","22");
+		});
+    });
+</script>
+<script src="/wxinfo/currwx/climatjs/9day1108_1116.js"></script>
+<h1 id="kai" style="text-align:center; border-bottom: 3px solid #FF9C23;">
+9-day Weather Forecast</h1>
+<style>
+	.show_version
+	{
+		text-decoration: none;
+		color: blue;
+	}
+	.show_version:hover
+	{
+		text-decoration: underline;
+	}
+	.dimmer
+	{
+		color: #797979
+	}
+</style>
+<a href="javascript:" class="show_version" id="full_version" style="">Full Version</a> / <a href="javascript:" class="show_version dimmer" id="sim_version" style="">Simplified Version</a>
+<script>
+$(function(){
+	$('#full_version').click(function(){
+			$("*").stop(true,true);
+			$(this).removeClass('dimmer');
+			$('#sim_version').addClass('dimmer');
+			$('#forecast_desc div').slideDown();
+			$('#temp_legend').slideDown('slide');
+			$('#rh_legend').slideDown('slide');
+			$('#general_sit').slideDown('slide');
+	});
+	
+	$('#sim_version').click(function(){
+			$("*").stop(true,true);
+			$(this).removeClass('dimmer');
+			$('#full_version').addClass('dimmer');
+			$('#forecast_desc div').slideUp();
+			$('#temp_legend').slideUp();
+			$('#rh_legend').slideUp();
+			$('#general_sit').slideUp();
+	});
+	
+	setInterval(function(){
+					$(".highcharts-data-labels rect").attr("transform","translate(0,-2)");
+					$(".highcharts-data-labels rect").attr("height","22");
+				},3000);
+});
+</script>
+<div id="general_sit" style="border-radius: 10px; border: 3px solid; padding: 10px; position: relative; border-color: rgb(163, 222, 255); background-image: url('/wxinfo/currwx/img/deep_blue_bg.png');">
+	<h2 style="font-size: 100%; word-spacing: 0; margin-top: 0; margin-bottom: 5px;">General Situation:</h2>
+	<p style=" word-spacing: 0; margin-top: 0; margin-bottom: 0">
+		<span style="font-size:100%">The band of clouds now affecting southern China will thin out gradually. The weather will improve over the coast of Guangdong in the next few days. An area of low pressure is expected to enter the South China Sea in the latter part of this week, bringing unsettled weather to the region.</span>
+	</p>
+</div>
+<div id="fnd">	
+	<table class="data" width="100%" style="margin-top: 10px;  background-color: rgb(155, 155, 155);" border="0" cellpadding="0" cellspacing="1" summary="This table shows 9-day weather forecast. The first row shows the date. The second row shows the weather forecast and weather icon. The third row shows the predicated air temperature chart. The forth row shows the predicted relative humidity. The fifth row shows the predicted wind force. The fifth row show the date">
+    <tr align="center" style="background-color: #FFFFFF;"> 
+		<td style="width: 65px; padding: 2px;" class="evenCol">
+	08 Nov<br>(WED)
+	</td>
+		<td style="width: 65px; padding: 2px;" class="oddCol">
+	09 Nov<br>(THU)
+	</td>
+		<td style="width: 65px; padding: 2px;" class="evenCol">
+	10 Nov<br>(FRI)
+	</td>
+		<td style="width: 65px; padding: 2px;" class="oddCol">
+	11 Nov<br>(SAT)
+	</td>
+		<td style="width: 65px; padding: 2px;" class="evenCol">
+	12 Nov<br>(SUN)
+	</td>
+		<td style="width: 65px; padding: 2px;" class="oddCol">
+	13 Nov<br>(MON)
+	</td>
+		<td style="width: 65px; padding: 2px;" class="evenCol">
+	14 Nov<br>(TUE)
+	</td>
+		<td style="width: 65px; padding: 2px;" class="oddCol">
+	15 Nov<br>(WED)
+	</td>
+		<td style="width: 65px; padding: 2px;" class="evenCol">
+	16 Nov<br>(THU)
+	</td>
+		</tr>
+	<tr style="background-color: #FFFFFF;" id="forecast_desc">
+		<td style="padding: 2px; border-top: 0px;" align="center" valign="top" class="evenCol">
+	<img border="0" src="/images/wxicon/pic54.png" alt="Sunny Intervals with Showers" style="width: 50px; height: 50px; margin: 6px; border-radius: 10px;">
+	<div style="text-align:left;padding: 0px;font-size:100%;">
+		Mainly cloudy. One or two rain patches at first. Sunny intervals during the day.</div>	
+	</td>
+		<td style="padding: 2px; border-top: 0px;" align="center" valign="top" class="oddCol">
+	<img border="0" src="/images/wxicon/pic51.png" alt="SUNNY PERIODS" style="width: 50px; height: 50px; margin: 6px; border-radius: 10px;">
+	<div style="text-align:left;padding: 0px;font-size:100%;">
+		Sunny periods.</div>	
+	</td>
+		<td style="padding: 2px; border-top: 0px;" align="center" valign="top" class="evenCol">
+	<img border="0" src="/images/wxicon/pic51.png" alt="SUNNY PERIODS" style="width: 50px; height: 50px; margin: 6px; border-radius: 10px;">
+	<div style="text-align:left;padding: 0px;font-size:100%;">
+		Mainly fine.</div>	
+	</td>
+		<td style="padding: 2px; border-top: 0px;" align="center" valign="top" class="oddCol">
+	<img border="0" src="/images/wxicon/pic51.png" alt="SUNNY PERIODS" style="width: 50px; height: 50px; margin: 6px; border-radius: 10px;">
+	<div style="text-align:left;padding: 0px;font-size:100%;">
+		Sunny periods.</div>	
+	</td>
+		<td style="padding: 2px; border-top: 0px;" align="center" valign="top" class="evenCol">
+	<img border="0" src="/images/wxicon/pic62.png" alt="Light Rain" style="width: 50px; height: 50px; margin: 6px; border-radius: 10px;">
+	<div style="text-align:left;padding: 0px;font-size:100%;">
+		Mainly cloudy with a few rain patches.</div>	
+	</td>
+		<td style="padding: 2px; border-top: 0px;" align="center" valign="top" class="oddCol">
+	<img border="0" src="/images/wxicon/pic62.png" alt="Light Rain" style="width: 50px; height: 50px; margin: 6px; border-radius: 10px;">
+	<div style="text-align:left;padding: 0px;font-size:100%;">
+		Mainly cloudy with a few rain patches.</div>	
+	</td>
+		<td style="padding: 2px; border-top: 0px;" align="center" valign="top" class="evenCol">
+	<img border="0" src="/images/wxicon/pic62.png" alt="Light Rain" style="width: 50px; height: 50px; margin: 6px; border-radius: 10px;">
+	<div style="text-align:left;padding: 0px;font-size:100%;">
+		Mainly cloudy with one or two rain patches.</div>	
+	</td>
+		<td style="padding: 2px; border-top: 0px;" align="center" valign="top" class="oddCol">
+	<img border="0" src="/images/wxicon/pic62.png" alt="Light Rain" style="width: 50px; height: 50px; margin: 6px; border-radius: 10px;">
+	<div style="text-align:left;padding: 0px;font-size:100%;">
+		Mainly cloudy with one or two rain patches.</div>	
+	</td>
+		<td style="padding: 2px; border-top: 0px;" align="center" valign="top" class="evenCol">
+	<img border="0" src="/images/wxicon/pic62.png" alt="Light Rain" style="width: 50px; height: 50px; margin: 6px; border-radius: 10px;">
+	<div style="text-align:left;padding: 0px;font-size:100%;">
+		Mainly cloudy. One or two rain patches in the morning and at night. Bright periods during the day.</div>	
+	</td>
+		</tr>  
+	<tr style="background-color: #FFFFFF;">
+	<td colspan="9" class="chart1">
+		<div id="container_7day_chart_temp" style="position: relative; overflow: hidden; width: 765px;  text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif; font-size: 12px;"></div>
+	</td>
+    </tr>
+    <tr style="background-color: #FCFFC6;">
+	<td colspan="9" class="remark1" align="center" cellpadding="0" style="margin-top:0px;margin-bottom:0px;padding:0">
+		<div id="temp_legend" style="">
+			<p style="padding:0px;margin-bottom:0px;margin-top:-6px">
+				<span style="font-weight: bold;">Forecast:</span> maximum temperature 
+				<img id="max_temp_legend" src="/wxinfo/currwx/img/legend1.png" style="display:inline-block;vertical-align:middle;padding-left:2px;padding-right:5px;margin-top:-3px; ">
+				minimum temperature
+				<img id="min_temp_legend" src="/wxinfo/currwx/img/legend2.png" style="display:inline-block;vertical-align:middle;margin-top:-3px;">
+			</p>
+			<table border="0" cellpadding="0" cellspacing="0" align="center"  width="100%">
+				<tr>
+					<td style="border: none;" width="5%">
+						<input type="checkbox" name="pen_temp_max_checkbox" id="pen_temp_max_checkbox" checked="checked" style="margin-right: 10px;"/> 
+					</td>
+					<td style="border: none; font-size:80%" align="left" class="pen_temp_max_title" width="78%">
+						50% of the days have maximum temperatures falling within this range (based on 30-year climate data)<sup style="font-size:9pt">[note 1]</sup>
+					</td>
+					<td style="border: 0;" align="left" width="17%">
+						<img id="max_temp_per_legend" src="/wxinfo/currwx/img/per_max_legend.png"  style="margin-left: 5px;display:inline-block;width:50px;vertical-align:middle;padding-left:2px;padding-right:5px; margin-right: 10px;">
+					</td>
+				</tr>
+				<tr>
+					<td style="border: none;">
+						<input type="checkbox" name="pen_temp_min_checkbox" id="pen_temp_min_checkbox" checked="checked" style="margin-right: 10px;"/> 
+					</td>
+					<td style="border: none; font-size:80%" align="left" class="pen_temp_min_title">
+						50% of the days have minimum temperatures falling within this range (based on 30-year climate data)<sup style="font-size:9pt">[note 1]</sup>
+					</td>
+					<td style="border: none;" align="left">
+						<img id="min_temp_per_legend" src="/wxinfo/currwx/img/per_min_legend.png" style="margin-left: 5px;display:inline-block;width:50px;vertical-align:middle;padding-left:2px;padding-right:5px;">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3" style="border:none; height:50px; text-align:right;padding-right:1em;"><div class='btn' style="display:inline-block;"><a href="http://www.hko.gov.hk/probfcst/tempfcst.htm">Extended Outlook (Beta)</a></div></td>
+				</tr>
+			</table>
+		<div>
+	</td>
+  </tr>
+	<tr style="background-color: #FFFFFF;">
+	<td colspan="9" class="chart2">		
+		<div id="container_7day_chart_rh" style="position: relative; overflow: hidden; width: 765px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif; font-size: 12px;"></div>
+	</td>
+	</tr>
+	<tr style="background-color: #D5FFEC;">
+	<td colspan="9" class="remark2" align="center" cellpadding="0" style="margin-top:0px;margin-bottom:0px;padding:0">		
+		<div id="rh_legend" style="">
+			<p style="padding:0px;margin-bottom:0px;margin-top:-6px;">
+				<span style="font-weight: bold;">Forecast:</span> maximum relative humidity
+				<img id="max_temp_legend" src="/wxinfo/currwx/img/legend1.png" style="display:inline-block;vertical-align:middle;padding-left:2px;padding-right:5px;margin-top:-3px; ">
+				minimum relative humidity
+				<img id="/wxinfo/currwx/min_temp_legend" src="/wxinfo/currwx/img/legend2.png" style="display:inline-block;vertical-align:middle;margin-top:-3px;">
+			</p>
+			
+			<table border="0" cellpadding="0" cellspacing="1" align="center" style="font-size: 95%;" width="100%">
+					<tr>
+						<td style="border: none;" width="5%">
+							<input type="checkbox" name="pen_rh_max_checkbox" id="pen_rh_max_checkbox" checked="checked" style="margin-right: 10px;"/> 
+						</td>
+						<td align="left" class="pen_rh_max_title" style="border:0;  font-size:80%" width="75%" >
+							50% of the days have maximum relative humidity falling within this range (based on 30-year climate data)<sup style="font-size:9pt">[note 1]</sup>
+						</td>
+						<td style="border:0;" align="left" width="20%">
+							<img id="max_temp_per_legend" src="/wxinfo/currwx/img/per_max_legend.png"  style="display:inline-block;width:50px; padding-left:2px;padding-right:5px; margin-left: 5px;vertical-align:middle">
+						</td>
+					</tr>
+					<tr>
+						<td style="border:none;">
+							<input type="checkbox" name="pen_rh_min_checkbox" id="pen_rh_min_checkbox" checked="checked" style="margin-right: 10px;"/> 
+						</td>
+						<td style="border:none; font-size:80%" align="left" class="pen_rh_min_title">
+							50% of the days have minimum relative humidity falling within this range (based on 30-year climate data)<sup style="font-size:9pt">[note 1]</sup>
+						</td>
+						<td style="border:none; " align="left">
+							<img id="min_temp_per_legend" src="/wxinfo/currwx/img/per_min_legend.png" style="display:inline-block;width:50px;padding-left:2px;padding-right:5px; margin-left: 5px;vertical-align:middle">
+						</td>
+					</tr>
+			</table>
+		</div>
+	</td>
+  </tr>
+	<tr>
+	<script>
+		$(function(){
+			$('.ocnly').attr('title', "occasionally");
+			$('.ocnl').attr('title', "occasional");
+		});
+	</script>
+		<td style="text-align: left; padding: 2px; width: 80px;" valign="top" class="evenCol">
+	<div style='width:80px'>East to northeast <a title="Show in new window" href="javascript:GoForce('force4')">force 4 to 5</a>, occasionally <a title="Show in new window" href="javascript:GoForce('force6')">force 6 </a>offshore at night.</div>	</td>
+		<td style="text-align: left; padding: 2px; width: 80px;" valign="top" class="oddCol">
+	<div style='width:80px'>East <a title="Show in new window" href="javascript:GoForce('force4')">force 4 to 5</a>, occasionally <a title="Show in new window" href="javascript:GoForce('force6')">force 6 </a>offshore at first.</div>	</td>
+		<td style="text-align: left; padding: 2px; width: 80px;" valign="top" class="evenCol">
+	<div style='width:80px'>East <a title="Show in new window" href="javascript:GoForce('force3')">force 3 to 4</a>, <a title="Show in new window" href="javascript:GoForce('force5')">force 5 </a>at first.</div>	</td>
+		<td style="text-align: left; padding: 2px; width: 80px;" valign="top" class="oddCol">
+	<div style='width:80px'>East to northeast <a title="Show in new window" href="javascript:GoForce('force5')">force 5</a>, occasionally <a title="Show in new window" href="javascript:GoForce('force6')">force 6 </a>offshore.</div>	</td>
+		<td style="text-align: left; padding: 2px; width: 80px;" valign="top" class="evenCol">
+	<div style='width:80px'>East <a title="Show in new window" href="javascript:GoForce('force4')">force 4 to 5</a>, occasionally <a title="Show in new window" href="javascript:GoForce('force6')">force 6 </a>offshore.</div>	</td>
+		<td style="text-align: left; padding: 2px; width: 80px;" valign="top" class="oddCol">
+	<div style='width:80px'>East <a title="Show in new window" href="javascript:GoForce('force4')">force 4 to 5</a>.</div>	</td>
+		<td style="text-align: left; padding: 2px; width: 80px;" valign="top" class="evenCol">
+	<div style='width:80px'>East to northeast <a title="Show in new window" href="javascript:GoForce('force4')">force 4 to 5</a>, occasionally <a title="Show in new window" href="javascript:GoForce('force6')">force 6 </a>offshore later.</div>	</td>
+		<td style="text-align: left; padding: 2px; width: 80px;" valign="top" class="oddCol">
+	<div style='width:80px'>East <a title="Show in new window" href="javascript:GoForce('force4')">force 4 to 5</a>, occasionally <a title="Show in new window" href="javascript:GoForce('force6')">force 6 </a>offshore.</div>	</td>
+		<td style="text-align: left; padding: 2px; width: 80px;" valign="top" class="evenCol">
+	<div style='width:80px'>East <a title="Show in new window" href="javascript:GoForce('force4')">force 4 to 5</a>, occasionally <a title="Show in new window" href="javascript:GoForce('force6')">force 6 </a>offshore at first.</div>	</td>
+		</tr>
+	<tr align="center" style="background-color: #FFFFFF;">
+		<td style="background-position-y: -100px; padding: 2px;" class="evenCol">
+	08 Nov<br>(WED)
+	</td>
+		<td style="background-position-y: -100px; padding: 2px;" class="oddCol">
+	09 Nov<br>(THU)
+	</td>
+		<td style="background-position-y: -100px; padding: 2px;" class="evenCol">
+	10 Nov<br>(FRI)
+	</td>
+		<td style="background-position-y: -100px; padding: 2px;" class="oddCol">
+	11 Nov<br>(SAT)
+	</td>
+		<td style="background-position-y: -100px; padding: 2px;" class="evenCol">
+	12 Nov<br>(SUN)
+	</td>
+		<td style="background-position-y: -100px; padding: 2px;" class="oddCol">
+	13 Nov<br>(MON)
+	</td>
+		<td style="background-position-y: -100px; padding: 2px;" class="evenCol">
+	14 Nov<br>(TUE)
+	</td>
+		<td style="background-position-y: -100px; padding: 2px;" class="oddCol">
+	15 Nov<br>(WED)
+	</td>
+		<td style="background-position-y: -100px; padding: 2px;" class="evenCol">
+	16 Nov<br>(THU)
+	</td>
+		</tr>  
+	</table>		
+</div>
+<!--<p style="font-size:80%;margin-bottom:0px; ">Abbreviations: TS - thunderstorms, OCNL - occasional, OCNLY - occasionally, GRAD - gradually, SCT - scattered, ISOL - isolated </p>-->
+<!--start_nday-->
+<div style="float: right; margin-right: 6px;">
+	<p style="margin-bottom: 0px;"><span style="font-style:italic; float: right;">Updated at： 11:30 HKT 7 Nov 2017</span></p>
+	<br/>
+	<p style="margin-top: 7px;"><span style="font-style:italic; float: right;">(Next update at： 16:30 HKT 7 Nov 2017)</span></p>
+</div>
+<div style="clear:both; margin-bottom:1em;" ></div>
+<p style="margin-top:0;">
+	<img src="/ball_or.gif" alt="" style="padding-right:0.5em;"><a href="http://maps.weather.gov.hk/ocf/index_e.html" target="_blank"> Automatic Regional Weather Forecast in Hong Kong &amp; Pearl River Delta Region </a>
+	<br>
+	<img src="/ball_or.gif" alt="" style="padding-right:0.5em;"><a href="/wxinfo/climat/normal/5dnorm11081116_e.htm">Climatological information for 08  Nov - 16  Nov</a>
+	
+	
+</p>
+<div style="position: relative;">	
+	<div style="border-radius: 10px; border: 3px solid; padding: 10px; float: left; border-color: rgb(163, 222, 255); background-image: url('/wxinfo/currwx/img/deep_blue_bg.png'); width: 336px; margin-right: 10px; height:90px; font-size:95%">
+		Sea surface temperature <br />7 a.m. on 7 Nov 2017 at North Point :		
+		<div style="background-image: url('/wxinfo/currwx/img/SeaTemp_bg.png');height: 50px;line-height: 60px;margin-left: -5px;color: black; background-repeat: no-repeat; padding-left: 35px; width: 60px; font-weight: bolder; border-radius: 8px;">25 °C</div>
+	</div>
+	<div style="border-radius: 10px; border: 3px solid; padding: 10px; float: left;  border-color: rgb(163, 222, 255); background-image: url('/wxinfo/currwx/img/deep_blue_bg.png'); width: 346px; height:90px; font-size:95%;">
+		Soil temperatures <br /> 7 a.m. on 7 Nov 2017 at the Hong Kong Observatory:
+		<div></div>
+		<div style="display: inline-block; background-image: url('/wxinfo/currwx/img/groundTemp_bg.png');height: 50px;line-height: 68px;margin-left: 6px;color: white; background-repeat: no-repeat; padding-left: 16px; border-radius: 8px; width: 140px;">  0.5m depth:26.7°C</div>
+		<div style="display: inline-block; margin-left: 20px; background-image: url('/wxinfo/currwx/img/groundTemp_bg.png');height: 50px;line-height: 68px; color: white; background-repeat: no-repeat; padding-left: 16px; border-radius: 8px; width: 140px;"> 1.0m depth:27.8°C</div>
+	</div>
+</div>
+<div style="clear: both;"></div>
+<!--end_nday-->
+<br>
+Note:<br/>
+<ol><li>This middle 50% range (between 25th and 75th percentiles) is calculated based on the maximum/minimum temperature and relative humidity data within a 5-day period centred on that day in the 30 years from 1981 to 2010.
+</li>
+<li>"9-day Weather Forecast" provides general indications of the trends in weather for the coming 9 days.
+For detailed description of today's weather forecast, please refer to "<a href="/wxinfo/currwx/flw.htm">Local Weather Forecast</a>".</li>
+<li>The accuracy of forecast generally decreases with forecast period.  The average accuracy of weather forecast for the next one to three days,  four to seven days, and eight to nine days are about 90%, 85% and 80% respectively.</li>
+<li>The accuracy of forecast also varies for different weather systems in different seasons.  Generally speaking, weather in spring and summer such as fog, tropical cyclone and severe convective weather is more changeable, resulting in higher uncertainty of forecast.</li></ol>
+<br/><br/>
+</div>
+<!--Content End--> </DIV>
+</DIV>
+</DIV>
+</DIV>
+</DIV>
+<DIV id=clf_footer>
+<DIV id=clf_footer_spliter></DIV>
+<DIV class=clf_table>
+<DIV class=clf_table_row>
+<DIV class=clf_table_cell>
+<DIV id=wcag_footer></DIV>
+<A title="Web Accessibility Recognition Scheme" href="http://www.webforall.gov.hk/recognition_scheme" target=_blank>
+<DIV id=gold_logo></DIV>
+</A></DIV>
+<DIV class="clf_table_cell clf_footer_right_content"><A title="Brand Hong Kong - Asia world city" href="http://www.brandhk.gov.hk/index.html" target=_blank>
+<DIV id=brandhk></DIV>
+</A></DIV>
+</DIV>
+<DIV class=clf_table_row>
+<DIV id=footer_links class=clf_table_cell>2016 &#169; | <A onfocus="this.className='wcag_footer_link_onfocus';" onblur="this.className='wcag_footer_link';" class=wcag_footer_link href="http://www.hko.gov.hk/readme/readme.htm">Important notices</A> | <A onfocus="this.className='wcag_footer_link_onfocus';" onblur="this.className='wcag_footer_link';" class=wcag_footer_link href="http://www.hko.gov.hk/privacy/policy.htm">Privacy policy</A> | <A onfocus="this.className='wcag_footer_link_onfocus';" onblur="this.className='wcag_footer_link';" class=wcag_footer_link href="http://www.hko.gov.hk/sitemap/index.htm">Site Map</A> | <A onfocus="this.className='wcag_footer_link_onfocus';" onblur="this.className='wcag_footer_link';" class=wcag_footer_link href="http://www.hko.gov.hk/contact.htm">Contact us</A> </DIV>
+<DIV id=last_modify_date class="clf_table_cell clf_footer_right_content">Last revision date: &lt;07 Nov 2017&gt; </DIV>
+</DIV>
+</DIV>
+</DIV>
+</DIV>
+
+</BODY>
+</HTML>

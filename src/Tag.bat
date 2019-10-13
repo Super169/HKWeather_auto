@@ -1,0 +1,1 @@
+REM docker tag super169/hkweather super169/hkweather:<version>

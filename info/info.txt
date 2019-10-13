@@ -1,0 +1,89 @@
+RT_DISTRICT_CODE
+RT_DISTRICT_ENG
+RT_DISTRICT_CHI
+
+
+01: Current Weather (RSS)
+http://rss.weather.gov.hk/rss/CurrentWeather.xml
+CW_ROOT
+  - const CW_PICTURE_ICON
+  - CW_HK_TEMP
+  - CW_HK_HUMI
+  - CW_UV_INDEX
+  - CW_UV_INTENSITY
+  - CW_LOCAL_TEMP
+
+02: Regional Weather (HTML)
+http://www.weather.gov.hk/wxinfo/ts/text_readings_e.htm
+RW_ROOT
+  - RW_TEMP
+  - RW_HUMI
+  - RW_TEMP_HIGH
+  - RW_TEMP_LOW
+
+
+03: Weather Signal (RSS)
+http://rss.weather.gov.hk/rss/WeatherWarningSummaryv2.xml
+WS_ROOT
+  - WS_TYPHOON
+  - WS_RAINSTORM
+
+04 : Forecast Info (HTML)
+http://www.weather.gov.hk/wxinfo/currwx/fnd.htm
+FC_ROOT
+  []
+   - FC_INDEX
+   - FC_DATE
+   - FC_PICTURE_ICON
+   - FC_WEEKDAY
+   - FC_WEEKDAY_DESC
+   - FC_TEMP_HIGH
+   - FC_TMMP_LOW
+
+05 - Severval Days Forecast (RSS)
+http://rss.weather.gov.hk/rss/SeveralDaysWeatherForecast.xml
+SF_ROOT
+  []
+   - SF_INDEX
+   - SF_DATE
+   - SF_WEEKDAY
+   - SF_WEEKDAY_DESC
+   - SF_PICTURE_ICON
+   - SF_TEMP_LOW
+   - SF_TEMP_HIGH
+   - SF_HUMI_LOW
+   - SF_HUMI_HIGH
+
+06 - Refional Forecast (XML)
+http://maps.weather.gov.hk/ocf/dat/$location$.xml
+DF_ROOT
+  - DF_DAY_0
+  - DF_DAY_PIC
+  - DF_DAY_TEMP_LOW
+  - DF_DAY_TEMP_HIGH
+  - DF_DAY_RAIN
+  - DF_HOUR_TIME
+  - DF_HOUR_PIC
+  - DF_HOUR_TEMP
+  - DF_HOUR_HUMI
+
+Text Data:
+http://www.weather.gov.hk/textonly/v2/index.htm
+
+http://www.weather.gov.hk/wxinfo/currwx/flw.htm (may contain today's high, low temp)
+http://www.weather.gov.hk/textonly/v2/forecast/local.htm
+
+http://maps.weather.gov.hk/ocf/text_e.html?mode=0&station=SHA#
+
+http://maps.weather.gov.hk/ocf/dat/HKO.xml
+Header:
+  GET /ocf/dat/HKS.xml HTTP/1.1
+  Host: maps.weather.gov.hk
+  Connection: keep-alive
+  Accept: application/json, text/javascript, */*; q=0.01
+  X-Requested-With: XMLHttpRequest
+  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+  Referer: http://maps.weather.gov.hk/ocf/text_e.html?mode=0&station=HKS
+  Accept-Encoding: gzip, deflate
+  Accept-Language: en-US,en;q=0.9
+

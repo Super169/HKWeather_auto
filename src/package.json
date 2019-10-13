@@ -1,0 +1,21 @@
+{
+  "name": "hkweather169",
+  "version": "0.1.0",
+  "description": "HK Weather Informaiton",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://super169.asuscomm.com:30000/Node.js/hkweather169.git"
+  },
+  "author": "Super169",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "regex": "^0.1.1",
+    "request": "^2.88.0"
+  }
+}
